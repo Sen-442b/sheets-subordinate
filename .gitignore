@@ -1,2 +1,10 @@
+
+#modules
 node_modules
 
+
+#secrets
+.env
+
+#dev tools
+requests.rest
