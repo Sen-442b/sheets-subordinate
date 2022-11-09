@@ -4,7 +4,6 @@ import "./App.css";
 import AllRoutes from "./components/Routes/AllRoutes";
 
 function App() {
-  useEffect(() => console.log("api call"), []);
   return (
     <div className="App">
       <AllRoutes />

@@ -1,8 +1,11 @@
 import React, { createContext, useEffect, useState } from "react";
 
-const AuthContext = createContext();
+export const AuthContext = createContext();
+
+const INITIAL_STATE = { username: "", accessToken: "" };
 const AuthContextProvider = ({ children }) => {
-  const [authenticatedUserData, setAuthenticatedUserData] = useState({});
+  const [authenticatedUserData, setAuthenticatedUserData] =
+    useState(INITIAL_STATE);
   useEffect(() => {
     const persistedUserData = JSON.parse(
       localStorage.getItem("persistedUserData")

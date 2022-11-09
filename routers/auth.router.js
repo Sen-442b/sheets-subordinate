@@ -39,7 +39,7 @@ router.route("/login").post(async (req, res) => {
     if (!foundUser) {
       return res
         .status(404)
-        .json({ message: "User not registered. Not found error" });
+        .json({ error: { message: "User not registered. Not found error" } });
     }
     const matchPassword = await bcrypt.compare(password, foundUser.password);
 
@@ -54,7 +54,9 @@ router.route("/login").post(async (req, res) => {
       });
     }
   } catch (error) {
-    return res.status(500).json({ message: "Internal server error" });
+    return res
+      .status(500)
+      .json({ error: { message: "Internal server error" } });
   }
 });
 
