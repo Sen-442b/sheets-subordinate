@@ -1,0 +1,13 @@
+@import url("./pages/Signup/signup.css");
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.auth-container {
+  border: 2px solid rgba(245, 241, 241, 0.763);
+  padding: 2rem;
+}

@@ -5,6 +5,9 @@ const jwt = require("jsonwebtoken");
 const UserData = require("../schemas/UserData");
 
 const router = express.Router();
+router.route("/").get(async (req, res) => {
+  res.json({ message: "works" });
+});
 
 router.route("/signup").post(async (req, res) => {
   try {
