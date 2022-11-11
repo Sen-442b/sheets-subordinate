@@ -3,10 +3,13 @@ import App from "../../App";
 import Home from "../../pages/Home/Home";
 import Login from "../../pages/Login/Login";
 import Signup from "../../pages/Signup/Signup";
+import Subscriptions from "../../pages/Subscriptions/Subscriptions";
 import PrivateRoute from "./PrivateRoute";
-import PublicRoute from "./PrivateRoutes";
+
+import PublicRoute from "./PublicRoute";
 const AllRoutes = () => {
   const navigate = useNavigate();
+
   return (
     <Routes>
       <Route path="/" element={<Home />} />
@@ -18,15 +21,22 @@ const AllRoutes = () => {
           </PublicRoute>
         }
       />
-      <Route path="/signup" element={<Signup />} />
+      <Route
+        path="/signup"
+        element={
+          <PublicRoute>
+            <Signup />
+          </PublicRoute>
+        }
+      />
       <Route
         path="/subscriptions"
         element={
           <PrivateRoute>
-            <div>Subscriptions</div>
+            <Subscriptions />
           </PrivateRoute>
         }
-      ></Route>
+      />
     </Routes>
   );
 };
