@@ -1,16 +1,19 @@
 import { useContext, useEffect, useState } from "react";
 import reactLogo from "./assets/react.svg";
+
 import "./App.css";
 import AllRoutes from "./components/Routes/AllRoutes";
 
 import { getClientId } from "./utils/getClientId";
 import { GClientContext } from "./components/Contexts/GoogleClientContextProvider";
 import axios from "axios";
+import jwtDecode from "jwt-decode";
 
-const scopes = "https://www.googleapis.com/auth/drive.metadata";
+const scopes =
+  "https://www.googleapis.com/auth/drive.metadata https://www.googleapis.com/auth/userinfo.email";
 function App() {
   const getLoginResponse = (response) => {
-    console.log("EncodedToken", response.credential);
+    console.log("EncodedToken", jwtDecode(response.credential));
   };
   const { setGoogleInstances } = useContext(GClientContext);
   useEffect(() => {
@@ -21,11 +24,13 @@ function App() {
       client_id: getClientId(),
       callback: getLoginResponse,
     });
+
     google.accounts.id.renderButton(document.getElementById("google-login"), {
       theme: "outline",
       size: "large",
       text: "sign_in_with",
     });
+
     const tokenClient = google.accounts.oauth2.initTokenClient({
       client_id: getClientId(),
       scope: scopes,
@@ -33,8 +38,9 @@ function App() {
         //fired after successfully getting api access consent from user
         console.log(tokenResponse);
         if (tokenResponse && tokenResponse.access_token) {
-          axios
-            .get("https://www.googleapis.com/drive/v3/files", {
+          const getUserSpreadSheetsMetaData = axios.get(
+            "https://www.googleapis.com/drive/v3/files",
+            {
               params: {
                 // prettier-ignore
                 q:'mimeType=\'application/vnd.google-apps.spreadsheet\'',
@@ -42,9 +48,22 @@ function App() {
               headers: {
                 Authorization: `Bearer ${tokenResponse.access_token}`,
               },
-            })
-            .then((res) => console.log(res))
-            .catch((err) => console.log(err));
+            }
+          );
+          const getUserEmail = axios.get(
+            `https://www.googleapis.com/oauth2/v2/userinfo`,
+            {
+              headers: {
+                Authorization: `Bearer ${tokenResponse.access_token}`,
+              },
+            }
+          );
+
+          Promise.all([getUserEmail, getUserSpreadSheetsMetaData]).then(
+            (responses) => {
+              console.log(responses);
+            }
+          );
         }
       },
     });
