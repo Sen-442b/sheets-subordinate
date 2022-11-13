@@ -8,10 +8,13 @@ import { getClientId } from "./utils/getClientId";
 import { GClientContext } from "./components/Contexts/GoogleClientContextProvider";
 import axios from "axios";
 import jwtDecode from "jwt-decode";
+import { response } from "express";
+import { UsersDataContext } from "./components/Contexts/UsersDataProvider";
 
 const scopes =
   "https://www.googleapis.com/auth/drive.metadata https://www.googleapis.com/auth/userinfo.email";
 function App() {
+  const { dispatch } = useContext(UsersDataContext);
   const getLoginResponse = (response) => {
     console.log("EncodedToken", jwtDecode(response.credential));
   };
@@ -24,18 +27,18 @@ function App() {
       client_id: getClientId(),
       callback: getLoginResponse,
     });
-
+    /*
     google.accounts.id.renderButton(document.getElementById("google-login"), {
       theme: "outline",
       size: "large",
       text: "sign_in_with",
     });
+    */
 
     const tokenClient = google.accounts.oauth2.initTokenClient({
       client_id: getClientId(),
       scope: scopes,
       callback: (tokenResponse) => {
-        //fired after successfully getting api access consent from user
         console.log(tokenResponse);
         if (tokenResponse && tokenResponse.access_token) {
           const getUserSpreadSheetsMetaData = axios.get(
@@ -59,11 +62,23 @@ function App() {
             }
           );
 
-          Promise.all([getUserEmail, getUserSpreadSheetsMetaData]).then(
-            (responses) => {
+          Promise.all([getUserEmail, getUserSpreadSheetsMetaData])
+            .then((responses) => {
               console.log(responses);
-            }
-          );
+              const userInfo = responses[0].data;
+              const spreadSheetsMetaData = responses[1].data.files;
+              dispatch({
+                type: "ADD_USER_DATA",
+                payload: {
+                  email: userInfo.email,
+                  picture: userInfo.picture,
+                  spreadSheetsMetaData,
+                },
+              });
+            })
+            .catch((err) => {
+              console.log(err);
+            });
         }
       },
     });
