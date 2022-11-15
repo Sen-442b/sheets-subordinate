@@ -85,6 +85,7 @@ export const SheetsForm = (props) => {
           },
         ]);
       });
+    setIsSheetsFormModalOpen(false);
   };
   return (
     <>

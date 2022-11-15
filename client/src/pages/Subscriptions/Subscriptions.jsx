@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { GClientContext } from "../../components/Contexts/GoogleClientContextProvider";
 import { UsersDataContext } from "../../components/Contexts/UsersDataProvider";
@@ -10,6 +11,7 @@ const Subscriptions = () => {
   const [isSheetsFormModalOpen, setIsSheetsFormModalOpen] = useState(false);
   const [selectedUserData, setSelectedUserData] = useState({});
   const { googleInstances } = useContext(GClientContext);
+  const navigate = useNavigate();
   const { tokenClient } = googleInstances;
   const { usersDataState } = useContext(UsersDataContext);
   const onLoginSuccess = (res) => {
@@ -27,7 +29,7 @@ const Subscriptions = () => {
   return (
     <div>
       <div id="google-login"></div>
-      <button onClick={readDriveData}>Google Drive </button>
+      <button onClick={readDriveData}>Authenticate your gmail</button>
       {usersDataState.length !== 0 &&
         usersDataState.map((userData) => {
           return (
@@ -48,6 +50,14 @@ const Subscriptions = () => {
           selectedUserData={selectedUserData}
         />
       )}
+      <div>
+        <button
+          className="btn btn-primary"
+          onClick={() => navigate("/dashboard")}
+        >
+          Go to Dashboard
+        </button>
+      </div>
     </div>
   );
 };
