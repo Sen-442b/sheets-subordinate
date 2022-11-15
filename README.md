@@ -33,11 +33,11 @@ The project is hosted but it is not production ready kindly test the project loc
   ```
   
  - Create a `.env` file and paste it inside that
- - ```
-  ATLAS_URI="mongodb+srv://demoUser123:Ytt5vCgO6CxvrB5s@cluster0.0qeoht7.mongodb.net/sheetsdb?retryWrites=true&w=majority"
+  ```
+    ATLAS_URI="mongodb+srv://demoUser123:Ytt5vCgO6CxvrB5s@cluster0.0qeoht7.mongodb.net/sheetsdb?retryWrites=true&w=majority"
 
-  ACCESS_TOKEN_SECRET=randomPairOfWords 
- - ``` 
+    ACCESS_TOKEN_SECRET=randomPairOfWords 
+   ``` 
 
 
 
@@ -60,6 +60,7 @@ The project is hosted but it is not production ready kindly test the project loc
     npm run dev
     ```
  - Replace the url from `127.0.1` to `localhost` on your browser (IMPORTANT step for Oauth2 authentication)
+ - Raise an issue or contact me at `shubhenduse322@gmail` for quries
 ---
 
 ### Project Status <a name="status"></a>
