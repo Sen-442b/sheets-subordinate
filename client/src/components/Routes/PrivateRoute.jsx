@@ -4,8 +4,12 @@ import { AuthContext } from "../Contexts/AuthContextProvider";
 
 const PrivateRoute = ({ children }) => {
   const { authenticatedUserData } = useContext(AuthContext);
-  const { accessToken } = authenticatedUserData;
-  return accessToken ? children : <Navigate to="/login" />;
+
+  return authenticatedUserData && authenticatedUserData.accessToken ? (
+    children
+  ) : (
+    <Navigate to="/login" />
+  );
 };
 
 export default PrivateRoute;

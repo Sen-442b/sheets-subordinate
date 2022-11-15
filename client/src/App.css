@@ -1,5 +1,5 @@
 @import url("./pages/Signup/signup.css");
-
+@import url("./components/SeetsForm/sheets-form.css");
 #root {
   max-width: 1280px;
   margin: 0 auto;

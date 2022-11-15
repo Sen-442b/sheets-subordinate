@@ -6,7 +6,7 @@ const UserData = require("../schemas/UserData");
 
 const router = express.Router();
 router.route("/").get(async (req, res) => {
-  res.json({ message: "works" });
+  res.json({ message: "server active" });
 });
 
 router.route("/signup").post(async (req, res) => {
