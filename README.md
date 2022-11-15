@@ -4,6 +4,7 @@
 
 - [About](#about)
 - [Note](#note)
+- [Demo](#demo)
 - [Running Project Locally](#run-locally)
 - [Project Status](#status)
 
@@ -17,6 +18,8 @@ A few clicks and you will be able to count the number of columns or tabs in your
 The project is hosted but it is not production ready kindly test the project locally, apologies for the inconvenience
 
 
+### Demo <a name="demo"></a>
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/kZArB3eA-i8/0.jpg)](https://www.youtube.com/watch?v=kZArB3eA-i8)
 ### Running Project Locally <a name="run-locally"></a>
 - Fork the repo
 - Clone the forked repo in your local machine 
@@ -28,10 +31,21 @@ The project is hosted but it is not production ready kindly test the project loc
   ```
   npm install 
   ```
+  
+ - Create a `.env` file and paste it inside that
+ - ```
+  ATLAS_URI="mongodb+srv://demoUser123:Ytt5vCgO6CxvrB5s@cluster0.0qeoht7.mongodb.net/sheetsdb?retryWrites=true&w=majority"
+
+  ACCESS_TOKEN_SECRET=randomPairOfWords 
+ - ``` 
+
+
+
 - Start the server locally (Configured Port:3000)
    ```
    npm start
    ```
+ 
 - Go to the client folder (Open a new terminal to avoid the hassle )
   ```
   cd client
