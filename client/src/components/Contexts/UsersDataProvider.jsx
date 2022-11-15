@@ -5,7 +5,9 @@ export const UsersDataContext = createContext();
 /*
 Manual type checking
 type usersDataObj={
-  email:email,
+  id:String,
+  email:String,
+  name:String
   picture:String,
   spreadSheetsMetaData:[]
 
@@ -17,7 +19,6 @@ type initialState =usersDataObj[]
 const usersDataReducer = (state, action) => {
   switch (action.type) {
     case "ADD_USER_DATA":
-      console.log(action.payload);
       return [...state, action.payload];
   }
 };

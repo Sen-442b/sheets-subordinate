@@ -8,3 +8,5 @@ node_modules
 
 #dev tools
 requests.rest
+# Local Netlify folder
+.netlify

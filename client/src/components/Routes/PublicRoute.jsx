@@ -5,7 +5,11 @@ import { AuthContext } from "../Contexts/AuthContextProvider";
 const PublicRoute = ({ children }) => {
   const { authenticatedUserData } = useContext(AuthContext);
 
-  return !authenticatedUserData?.accessToken ? children : <Navigate to={-1} />;
+  return !(authenticatedUserData && authenticatedUserData.accessToken) ? (
+    children
+  ) : (
+    <Navigate to={-1} />
+  );
 };
 
 export default PublicRoute;
