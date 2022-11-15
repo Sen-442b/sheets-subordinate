@@ -45,7 +45,7 @@ The project is hosted but it is not production ready kindly test the project loc
    ```
     npm run dev
     ```
- - Replace the url from `127.0.1` to `localhost` on your browser(IMPORTANT step for Oauth2 authentication)
+ - Replace the url from `127.0.1` to `localhost` on your browser (IMPORTANT step for Oauth2 authentication)
 ---
 
 ### Project Status <a name="status"></a>
@@ -56,5 +56,5 @@ The project is hosted but it is not production ready kindly test the project loc
 - Tasks Pending
   1. Persisting user's credentials/access after Outh2 authentication for more than an hour 
   2. Saving dashboard state in the database
-  3. Refactoring code (used unnecessary Context Providers to transfer state ) along with some repetitive code 
+  3. Refactoring code as used unnecessary Context Providers to transfer state along with some repetitive code 
   4. An attractive User Interface
