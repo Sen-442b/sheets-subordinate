@@ -57,4 +57,5 @@ The project is hosted but it is not production ready kindly test the project loc
   1. Persisting user's credentials/access after Outh2 authentication for more than an hour 
   2. Saving dashboard state in the database
   3. Refactoring code as used unnecessary Context Providers to transfer state along with some repetitive code 
-  4. An attractive User Interface
+  4. An attractive User Interface, frontend authentication and error handling 
+  5. Properly host the site as well as the API 
