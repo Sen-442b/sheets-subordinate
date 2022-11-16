@@ -60,7 +60,7 @@ The project is hosted but it is not production ready kindly test the project loc
     npm run dev
     ```
  - Replace the url from `127.0.1` to `localhost` on your browser (IMPORTANT step for Oauth2 authentication)
- - Raise an issue or contact me at `shubhenduse322@gmail` for quries
+ - Raise an issue or contact me at `shubhenduse322@gmail` for any queries 
 ---
 
 ### Project Status <a name="status"></a>
